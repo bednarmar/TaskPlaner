@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} TaskPlanerBundle:Task:show {% endblock %}
+
+{% block body %}
+    <h1>There is your:</h1>
+    <p>
+        <a>Task title: {{ task.title }}</a>
+        <a>Task description: {{ task.description }}</a>
+        <a>Task date: {{ task.date }}</a>
+    </p>
+    <p>
+        {% for comment in task.comments %}
+            {{ include('TaskPlanerBundle:Comment:show.html.twig', {'comment':comment}) }}
+        {% endfor %}
+        <a href="{{ path('taskplaner_comment_create',{'taskId':task.id}) }}">Add comment</a>
+        <a href="{{ path('taskplaner_task_showall') }}">Go back</a>
+    </p>
+{% endblock %}
+
+

@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}TaskPlanerBundle:Tasks:showAll {% endblock %}
+
+{% block body %}
+    <p><a href="{{ path('taskplaner_task_showall') }}">All</a></p>
+    {% for category in categories %}
+        <p><a href="{{ path('taskplaner_task_showall', {'category': category.id}) }}">{{ category.title }}</a></p>
+    {% endfor %}
+    <h1>My categories:</h1>
+    {# <p>Task title: {{ task.title }}</p>#}
+    {% for task in tasks %}
+        <p>
+            <a>{{ task.title }}</a>
+            <a href="{{ path('taskplaner_task_show', {'id':task.id}) }}">Show this one</a>
+            <a href="{{ path('taskplaner_task_create')}}">Add</a>
+            <a href="{{ path('taskplaner_task_delete', {'id':task.id}) }}">Delete</a>
+
+        </p>
+
+    {% endfor %}
+
+{% endblock %}

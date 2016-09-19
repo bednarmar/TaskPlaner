@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}TaskPlanerBundle:Comments:showAll {% endblock %}
+
+{% block body %}
+    <h1>There are your comments:</h1>
+    {# <p>Comment title: {{ comment.title }}</p>#}
+    {% for comment in comments %}
+        <p>
+            <a>{{ comment.title }}</a>
+            <a>{{ comment.description }}</a>
+            <a href="{{ path('taskplaner_comment_delete', {'id':comment.id}) }}">Delete</a>
+            <a href="{{ path('taskplaner_comment_create')}}">Add</a>
+        </p>
+
+    {% endfor %}
+
+{% endblock %}
